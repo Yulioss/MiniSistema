@@ -23,37 +23,8 @@ public login(credenciales: CredencialesUsuarioDTO): Observable<RespuestaAutentic
 
 saveToken(respuesta: RespuestaAutenticacionDTO)
 {
-    localStorage.setItem(this.keyToken, respuesta.Token)
-    localStorage.setItem(this.keyExpiration, respuesta.Expiracion.toString())
+    localStorage.setItem(this.keyToken, respuesta.token)
+    localStorage.setItem(this.keyExpiration, respuesta.expiracion.toString())
 }
 
-logging(): boolean
-{
-    const token = localStorage.getItem(this.keyToken)
-    if(!token)
-    {
-        return false;
-    }
-
-    const expiration = localStorage.getItem(this.keyExpiration)
-    
-    if(!expiration)
-    {
-        return false
-    }
-    
-    const expirationDate = new Date(expiration);
-    if(expirationDate <= new Date())
-    {
-        this.logout();
-        return false
-    }   
-    return true;
-}
-
-logout()
-{
-    localStorage.removeItem(this.keyToken);
-    localStorage.removeItem(this.keyExpiration);
-}
 }

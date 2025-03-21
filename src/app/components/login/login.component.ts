@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms'
 import { AuthService } from '../../services/auth.services';
 import { CredencialesUsuarioDTO, RespuestaAutenticacionDTO } from "../../DTOs/auth";
+import { Router } from '@angular/router';
 import {
   MatDialog,
   MatDialogActions,
@@ -34,7 +35,7 @@ export class LoginComponent {
 
 
   
-  constructor(){
+  constructor(private readonly router: Router){
     
   }
 
@@ -55,14 +56,14 @@ export class LoginComponent {
     return "";
   }
 
-  validaLogin()
+  validarLogin()
   {
     const user: CredencialesUsuarioDTO = {
-      Username: this.form.controls['user']?.value?.toString() || '',
-      Password: this.form.controls['password']?.value?.toString() || ''
+      username: this.form.controls['user']?.value?.toString() || '',
+      password: this.form.controls['password']?.value?.toString() || ''
     };
     this.authService.login(user).subscribe({
-      next: response => console.log('Observable emitted the next value: ' + response.Token),
+      next: response => this.router.navigate(['/inventory']),
       error: err => this.dialog.open(DialogError)
     });
   }

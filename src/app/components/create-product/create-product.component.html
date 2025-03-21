@@ -1,0 +1,21 @@
+
+<h2 mat-dialog-title>Formulario Registro Productos</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" class="container-form" (submit)="guardarProducto()">
+        <mat-label>Nombre</mat-label>
+        <mat-form-field class="input">
+            <input matInput placeholder="Ingrese el nombre" [formControl]="form.controls.name"  required >
+            <mat-error> {{obtenerErrorCampoNombre()}} </mat-error>
+        </mat-form-field>
+        <mat-label>Cantidad</mat-label>
+        <mat-form-field class="input">
+            <input matInput placeholder="Ingrese la cantidad" type="number"
+            [formControl]="form.controls.amount">
+                <mat-error> {{obtenerErrorCampoCantidad()}} </mat-error>
+        </mat-form-field>
+        <button [disabled]="form.invalid" mat-button cdkFocusInitial>Guardar</button>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+<button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

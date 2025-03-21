@@ -1,11 +1,11 @@
 export interface CredencialesUsuarioDTO
 {
-    Username: string,
-    Password: string
+    username: string,
+    password: string
 }
 
 export interface RespuestaAutenticacionDTO
 {
-    Token:string,
-    Expiracion:Date
+    token:string,
+    expiracion:Date
 }
