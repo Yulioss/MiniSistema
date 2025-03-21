@@ -7,7 +7,7 @@ import { CanActivate, Router } from '@angular/router';
 export class AuthGuard implements CanActivate {
 private readonly keyToken = "token";
 private readonly keyExpiration = "token-expiration"
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
 
   canActivate(): boolean
@@ -40,5 +40,6 @@ logout()
 {
     localStorage.removeItem(this.keyToken);
     localStorage.removeItem(this.keyExpiration);
+    this.router.navigate(['/login']);
 }
 }

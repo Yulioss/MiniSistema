@@ -1,8 +1,9 @@
-<div>
-    <button  mat-raised-button color="primary" class="main-buttons"  (click)="openCreateProduct()" ><mat-icon class="mat-icons-inbuttons">create</mat-icon>Crear Producto</button>
+<div class="container">
+    <h2>Inventario</h2>
+    <div class="table">
+        <button  mat-raised-button color="primary" class="main-buttons"  (click)="openCreateProduct()" style="width: 30%;"><mat-icon class="mat-icons-inbuttons">create</mat-icon>Registrar Movimiento</button>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-        
         <ng-container matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef> Nombre Producto </th>
           <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
@@ -13,6 +14,11 @@
           <th mat-header-cell *matHeaderCellDef> Cantidad </th>
           <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="movimiento">
+            <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+            <td mat-cell *matCellDef="let element"> {{element.movimiento}} </td>
+          </ng-container>
 
         <ng-container matColumnDef="editar">
             <th mat-header-cell *matHeaderCellDef>  </th>
@@ -33,5 +39,9 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Seleccionar página de elementos ">
+</mat-paginator>
+    </div>
 </div>

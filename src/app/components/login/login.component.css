@@ -1,13 +1,22 @@
 .container{
     display: flex; 
-    justify-content: center;   
+    justify-content: center;
+	flex-direction: column;  
+	align-items: center;
+	height: 100vh; 
+	background-color: #807d7c;
+	
 }
 .container-form {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	align-items: center;
-	align-content: center;
+	border-radius: 10px;
+	border-color: #807d7c;
+	border: 1px solid ;
+	padding: 20px;
+    width: 20%;
+	background-color: white;
 }
 
 .input {

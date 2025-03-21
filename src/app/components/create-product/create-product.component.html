@@ -13,6 +13,13 @@
             [formControl]="form.controls.amount">
                 <mat-error> {{obtenerErrorCampoCantidad()}} </mat-error>
         </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Tipo de Movimiento</mat-label>
+            <mat-select [formControl]="form.controls.transactionType">
+              <mat-option value="entrada">Entrada</mat-option>
+              <mat-option value="salida">Salida</mat-option>
+            </mat-select>
+          </mat-form-field>
         <button [disabled]="form.invalid" mat-button cdkFocusInitial>Guardar</button>
     </form>
 </mat-dialog-content>

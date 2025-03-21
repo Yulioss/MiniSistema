@@ -1,1 +1,12 @@
+<mat-toolbar color="primary" *ngIf="isLoggedIn">
+    <span>Mini Sistema</span>
+  
+    <span class="spacer"></span>
+  
+    <button mat-button [matMenuTriggerFor]="menu">Menú</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/inventory">Inicio</button>
+      <button mat-menu-item (click)="logout()">Cerrar sesión</button>
+    </mat-menu>
+  </mat-toolbar>
 <router-outlet />

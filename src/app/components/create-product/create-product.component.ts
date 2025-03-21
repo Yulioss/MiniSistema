@@ -7,10 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ProductosDTO } from '../../DTOs/inventory';
 import { InventoryService } from '../../services/inventory.services';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-create-product',
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, ReactiveFormsModule,MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, ReactiveFormsModule,MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatSelectModule],
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.css'
 })
@@ -18,7 +19,8 @@ export class CreateProductComponent {
   private readonly formbuilder= inject(FormBuilder);
   form = this.formbuilder.group({
     name:['', {validators: [Validators.required]}],
-    amount: ['', {validators: [Validators.required]}]
+    amount: ['', {validators: [Validators.required]}],
+    transactionType: ['entrada', Validators.required],
   })
   inventoryService = inject(InventoryService)
 
@@ -44,7 +46,8 @@ export class CreateProductComponent {
   {
     const product: ProductosDTO = {
       nombre: this.form.controls['name']?.value?.toString() || '',
-      cantidad: Number(this.form.controls['amount']?.value) || 1
+      cantidad: Number(this.form.controls['amount']?.value) || 0,
+      movimiento: this.form.controls['transactionType']?.value?.toString() || ''
     };
     if(product.cantidad > 0)
     {

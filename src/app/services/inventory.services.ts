@@ -11,8 +11,8 @@ export class InventoryService {
     private readonly http = inject(HttpClient);
     private readonly urlBase = environment.apiURL;
     
-public viewProducts(): Observable<ProductosDTO> {
-    return this.http.get<ProductosDTO>(this.urlBase + "/Productos/inventario")
+public viewProducts(): Observable<ProductosDTO[]> {
+    return this.http.get<ProductosDTO[]>(this.urlBase + "/Productos/inventario")
 }
 
 public createProduct(producto: ProductosDTO): Observable<string>{

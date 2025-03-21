@@ -1,5 +1,6 @@
 export interface ProductosDTO
 {
     nombre: string,
-    cantidad: number
+    cantidad: number,
+    movimiento: string
 }

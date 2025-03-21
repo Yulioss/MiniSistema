@@ -26,5 +26,8 @@ saveToken(respuesta: RespuestaAutenticacionDTO)
     localStorage.setItem(this.keyToken, respuesta.token)
     localStorage.setItem(this.keyExpiration, respuesta.expiracion.toString())
 }
+getToken(){
+    return localStorage.getItem(this.keyToken);
+}
 
 }
