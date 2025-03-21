@@ -1,0 +1,22 @@
+
+<div class="container">
+    <form [formGroup]="form" class="container-form" (submit)="validaLogin()">
+        <mat-form-field class="input">
+            <input matInput placeholder="Ingrese su usuario" [formControl]="form.controls.user" autocomplete="off" required >
+            <mat-error> {{obtenerErrorCampoUser()}} </mat-error>
+            <mat-icon matSuffix >account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="input">
+            <input matInput placeholder="Ingrese su contraseña" [type]="hide ? 'password' : 'text'"
+                formControlName="password">
+                <mat-error> {{obtenerErrorCampoContrasena()}} </mat-error>
+            <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <div class="button-row container">
+        <button [disabled]="form.invalid"  mat-raised-button color="primary" class="main-buttons"  ><mat-icon class="mat-icons-inbuttons">login</mat-icon>INICIAR SESIÓN</button>
+        </div>
+    </form>
+</div>
